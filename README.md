@@ -1,8 +1,42 @@
-<h1><div align = 'center'>Yellow-04</div></h1>
-<div align = 'center'\>Make Web to show cardnews</div>
-<h2>규칙</h2>
+# Photo Editor
 
-1. 정기회의는 매주 금요일 이산수학 이후 1공학관 3층 한자공에서 하도록 한다.
-2. 회의에 열심히 의견을 제시토록 한다.  
-3. 온라인 회의는 카카오톡을 지양하고 슬랙에서 주로 하도록 한다.  
- 
+> A photo editing application based on the [Cropper.js](https://github.com/fengyuanchen/cropperjs).
+
+- [Website](http://fengyuanchen.github.io/photo-editor)
+
+
+
+## Keyboard support
+
+- `Esc`: Cancel the cropping.
+- `Enter`: Complete the cropping.
+- `Delete`: Delete the uploaded or cropped image.
+- `←`: Move the image to left by 1 pixel.
+- `→`: Move the image to right by 1 pixel.
+- `↑`: Move the image to top by 1 pixel.
+- `↓`: Move the image to bottom by 1 pixel.
+- `M`: Enable to move the image by dragging.
+- `C`: Enable to crop on the image by dragging.
+- `I`: Zoom in the image.
+- `O`: Zoom out the image.
+- `L`: Rotate the image to the left.
+- `R`: Rotate the image to the right.
+- `H`: Flip the image on the horizontal.
+- `V`: Flip the image on the vertical.
+
+
+
+## Browser support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Opera (latest)
+- Edge (latest)
+- Internet Explorer 9+
+
+
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT) © [Fengyuan Chen](http://chenfengyuan.com)
