@@ -1,70 +1,76 @@
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>Facebook  Share</title>
-  </head>
-  <body>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
     <div>
-      <fb:login-button scope="public_profile,email,publish_actions"onlogin="checkLoginState();">Login</fb:login-button>
+        <fb:login-button scope="public_profile,email,publish_actions"onlogin="checkLoginState();"> 로그인 </fb:login-button>
     </div>
     <div>
-      <button id="posting" onclick="posting()">Post</button>
+        <button id="posting" onclick="posting()">포스팅</button>
     </div>
-  </body>
-  <script>
-  (function(d, s, id){
-    var js, fjs = d.getElementByTagName(s)[0];
-    if(d.getElementByTagName(id))
-      return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js,fjs);
-  }(document, 'script', 'facebook-jssdk'));
 
-  window.fbASyncInit = function(){
-    FB.init({
-      appID : 141728953125880,
-      cookie : true,
-      xfbml : true;
-      version : 'v2.10'
-    });
-  };
+</body>
+<script>
 
-  function checkLoginState(){
-    FB.getLoginStatus(function(response){
-      statusChangeCallback(response);
-    });
-  }
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
-  function statusChangeCallback(response){
-    console.log('check another info');
-    console.log(response);
-    if(response.status === 'connected'){
-      console.log('Login completed to FB and App');
-      FB.api('/me',function(response){
-        console.log('Successful login for '+response.name);
-      });
-    }else if (response.status === 'not_authorized') {
-      console.log('Fail to log in to App!');
-    }else{
-      console.log('You don\'t log in facebook yet');
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId : 750595375079993,
+            cookie : true,
+            xfbml : true,
+            version : 'v2.5'
+        });
+
+    };
+
+    //로그인 여부를 확인합니다.
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
     }
-    }
-  }
 
-  function posting(){
-    FB.api(
-      '/me/feed','post',{"message" : "Hello?"},
-      function(response){
-        console.log('facebook-response', response);
-        if (response && !response.error){
-          alert("Post completed");
-        }else{
-          console.log("Post failed");
+    function statusChangeCallback(response) {
+        console.log('response를 통해 다양한 정보를 확인할 수 있습니다.');
+        console.log(response);
+        if (response.status === 'connected') {
+            console.log('사용자가 Facebook에 로그인하고 앱에 로그인했습니다');
+            FB.api('/me', function(response) {
+                  console.log('Successful login for: ' + response.name);
+            });
+        } else if (response.status === 'not_authorized') {
+            console.log('사용자가 Facebook에 로그인했지만 앱에 로그인하지 않았습니다.');
+        } else {
+            console.log('사용자가 Facebook에 로그인하지 않았으므로 앱에 로그인했는지 알 수 없습니다');
         }
-      });
     }
-    </script>
-  </body>
+
+     function posting() {
+         FB.api(
+                '/me/feed','post', {"message" : "안녕하세요?"},
+                function(response) {
+                     console.log('facebook-response:', response);
+                     if (response && !response.error) {
+                         alert("포스팅 성공!");
+                     } else {
+                         console.log("포스팅 실패!");
+                     }
+        });
+     }
+
+</script>
+</body>
 </html>
