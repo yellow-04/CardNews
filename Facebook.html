@@ -1,21 +1,20 @@
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+ 
     <div>
         <fb:login-button scope="public_profile,email,publish_actions"onlogin="checkLoginState();"> 로그인 </fb:login-button>
     </div>
     <div>
-        <button id="posting" onclick="posting()">Post</button>
+        <button id="posting" onclick="posting()">포스팅</button>
     </div>
-
+ 
 </body>
 <script>
-
+ 
     // Load the SDK asynchronously
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -26,7 +25,7 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
+    
     window.fbAsyncInit = function() {
         FB.init({
             appId : '141728953125880',
@@ -34,16 +33,16 @@
             xfbml : true,
             version : 'v2.10'
         });
-
+    
     };
-
+    
     //로그인 여부를 확인합니다.
     function checkLoginState() {
         FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
         });
     }
-
+ 
     function statusChangeCallback(response) {
         console.log('response를 통해 다양한 정보를 확인할 수 있습니다.');
         console.log(response);
@@ -58,10 +57,10 @@
             console.log('사용자가 Facebook에 로그인하지 않았으므로 앱에 로그인했는지 알 수 없습니다');
         }
     }
-
+ 
      function posting() {
          FB.api(
-                '/me/feed','post', {"message" : "안녕하세요?"},
+                '/me/feed','post', {"message" : "안녕하세요?"}, 
                 function(response) {
                      console.log('facebook-response:', response);
                      if (response && !response.error) {
@@ -71,7 +70,7 @@
                      }
         });
      }
-
+        
 </script>
 </body>
 </html>
