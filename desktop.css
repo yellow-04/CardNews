@@ -1,0 +1,26 @@
+body {
+  width: 950px;
+}
+
+#header {
+  background: #ffff99;
+  height: 70px;
+}
+
+#sidebar {
+  background: #99ff99;
+  float: left;
+  width: 200px;
+  height: 600px;
+}
+
+#maincontent {
+  background: #9999ff;
+  height: 600px;
+}
+
+#footer {
+  background: #ffcc99;
+  height: 80px;
+  clear: left;
+}
