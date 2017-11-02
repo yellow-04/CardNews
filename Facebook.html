@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <title>Facebook  Share</title>
+  </head>
+  <body>
+    <div>
+      <fb:login-button scope="public_profile,email,publish_actions"onlogin="checkLoginState();">Login</fb:login-button>
+    </div>
+    <div>
+      <button id="posting" onclick="posting()">Post</button>
+    </div>
+  </body>
+  <script>
+  (function(d, s, id){
+    var js, fjs = d.getElementByTagName(s)[0];
+    if(d.getElementByTagName(id))
+      return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js,fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  window.fbASyncInit = function(){
+    FB.init({
+      appID : 141728953125880,
+      cookie : true,
+      xfbml : true;
+      version : 'v2.10'
+    });
+  };
+
+  function checkLoginState(){
+    FB.getLoginStatus(function(response){
+      statusChangeCallback(response);
+    });
+  }
+
+  function statusChangeCallback(response){
+    console.log('check another info');
+    console.log(response);
+    if(response.status === 'connected'){
+      console.log('Login completed to FB and App');
+      FB.api('/me',function(response){
+        console.log('Successful login for '+response.name);
+      });
+    }else if (response.status === 'not_authorized') {
+      console.log('Fail to log in to App!');
+    }else{
+      console.log('You don\'t log in facebook yet');
+    }
+    }
+  }
+
+  function posting(){
+    FB.api(
+      '/me/feed','post',{"message" : "Hello?"},
+      function(response){
+        console.log('facebook-response', response);
+        if (response && !response.error){
+          alert("Post completed");
+        }else{
+          console.log("Post failed");
+        }
+      });
+    }
+    </script>
+  </body>
+</html>
