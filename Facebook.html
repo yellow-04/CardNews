@@ -12,7 +12,7 @@
     </div>
    <div class="fb-like" data-share="true" data-width="450" data-show-faces="true">
     </div>
-  <script>
+<script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '141728953125880',
@@ -29,12 +29,6 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
-  function checkLoginState(){
-    FB.getLoginStatus(function(response){
-      statusChangeCallback(response);
-    });
-  }
 
   function statusChangeCallback(response){
     console.log('check another info');
