@@ -1,7 +1,7 @@
 <?php
 
 // We need the facebook php sdk.
-require 'facebook-php-sdk/src/facebook.php';
+require 'sdk/src/facebook.php';
 // Just for sexy debugging.
 require 'krumo/class.krumo.php';
 
